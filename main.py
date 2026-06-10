@@ -2,6 +2,7 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from transformers import pipeline
+from timeline_endpoint import router as timeline_router
 import ollama
 import whisper
 import tempfile
@@ -9,6 +10,7 @@ import shutil
 import os
 
 app = FastAPI()
+app.include_router(timeline_router)
 
 # =========================
 # LOAD MODELS ON STARTUP
